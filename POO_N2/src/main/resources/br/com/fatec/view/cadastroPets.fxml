@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="404.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.CadastroPetsController">
+   <children>
+      <TabPane layoutX="-1.0" layoutY="1.0" prefHeight="400.0" prefWidth="712.0">
+         <tabs>
+            <Tab closable="false" text="Gerenciar Pets">
+               <content>
+                  <AnchorPane prefHeight="347.0" prefWidth="712.0">
+                     <children>
+                        <Label layoutX="22.0" layoutY="55.0" text="CLIENTE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_cliente" layoutX="24.0" layoutY="85.0" prefHeight="31.0" prefWidth="187.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label layoutX="240.0" layoutY="55.0" text="NOME">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_nome" layoutX="240.0" layoutY="84.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <ImageView fx:id="img_foto" fitHeight="155.0" fitWidth="150.0" layoutX="501.0" layoutY="55.0" onMouseClicked="#mudarFoto" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../bin/icones/animal.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Label layoutX="22.0" layoutY="144.0" text="ESPECIE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_especie" layoutX="22.0" layoutY="174.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <Label layoutX="24.0" layoutY="238.0" text="DATA DE NASCIMENTO">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dtp_dataNasc" layoutX="24.0" layoutY="267.0" prefHeight="31.0" prefWidth="187.0" />
+                        <Label layoutX="240.0" layoutY="144.0" text="RAÇA">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_raca" layoutX="241.0" layoutY="174.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <HBox alignment="CENTER" layoutX="462.0" layoutY="249.0" prefHeight="67.0" prefWidth="229.0" spacing="20.0">
+                           <children>
+                              <Button fx:id="btn_salvarRegistro" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="99.0" text="SALVAR">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_excluirRegistro" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="99.0" text="EXCLUIR">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Consultar Pets">
+               <content>
+                  <AnchorPane prefHeight="417.0" prefWidth="712.0">
+                     <children>
+                        <Label layoutX="24.0" text="Parâmetro:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_parametro" layoutX="132.0" layoutY="3.0" prefHeight="25.0" prefWidth="149.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label layoutX="327.0" text="Digite:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_filtra" layoutX="395.0" layoutY="3.0" onInputMethodTextChanged="#filtraParametro">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <TableView layoutY="35.0" prefHeight="423.0" prefWidth="712.0">
+                          <columns>
+                            <TableColumn prefWidth="91.0" text="CPF DONO" />
+                              <TableColumn prefWidth="153.0" text="NOME DONO" />
+                            <TableColumn prefWidth="124.0" text="NOME PET" />
+                              <TableColumn prefWidth="104.0" text="ESPECIE" />
+                              <TableColumn prefWidth="117.0" text="RAÇA" />
+                              <TableColumn prefWidth="127.0" text="DATA DE NASC" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

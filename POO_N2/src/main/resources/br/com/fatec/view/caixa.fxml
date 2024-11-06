@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.CaixaController">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="35.0" prefWidth="888.0" />
+      <ImageView fx:id="img_fotoProd" fitHeight="154.0" fitWidth="149.0" layoutX="29.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../bin/icones/cart.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="29.0" layoutY="276.0" prefHeight="17.0" prefWidth="149.0" text="CÓDIGO">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField id="0" fx:id="txt_codItem" layoutX="29.0" layoutY="297.0" prefHeight="28.0" prefWidth="149.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Label layoutX="191.0" layoutY="109.0" prefHeight="17.0" prefWidth="149.0" text="CÓDIGO DE BARRAS">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="txt_codBarra" layoutX="191.0" layoutY="130.0" prefHeight="28.0" prefWidth="149.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Label layoutX="191.0" layoutY="164.0" prefHeight="17.0" prefWidth="149.0" text="VALOR UNITÁRIO">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="txt_valorUnit" alignment="CENTER_RIGHT" editable="false" layoutX="191.0" layoutY="185.0" prefHeight="28.0" prefWidth="149.0" promptText="R$0,00" />
+      <Label layoutX="191.0" layoutY="221.0" prefHeight="17.0" prefWidth="149.0" text="QUANTIDADE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="txt_qtd" layoutX="191.0" layoutY="242.0" prefHeight="28.0" prefWidth="149.0" promptText="1">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Label layoutX="191.0" layoutY="276.0" prefHeight="17.0" prefWidth="149.0" text="TOTAL DO ITEM">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="txt_totalItem" alignment="CENTER_RIGHT" layoutX="191.0" layoutY="297.0" prefHeight="28.0" prefWidth="149.0" promptText="R$0,00">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="506.0" layoutY="401.0" prefHeight="30.0" prefWidth="173.0" text="TOTAL RECEBIDO">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <TextField fx:id="txt_totalRecebido" alignment="CENTER_RIGHT" layoutX="506.0" layoutY="433.0" prefHeight="28.0" prefWidth="173.0" promptText="R$0,00">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="780.0" layoutY="401.0" prefHeight="30.0" prefWidth="80.0" text="TROCO">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <TextField fx:id="txt_troco" alignment="CENTER_RIGHT" editable="false" layoutX="687.0" layoutY="433.0" prefHeight="28.0" prefWidth="173.0" promptText="R$0,00" />
+      <Label alignment="CENTER_RIGHT" layoutX="749.0" layoutY="337.0" prefHeight="30.0" prefWidth="111.0" text="SUBTOTAL">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <TextField fx:id="txt_subtotal" alignment="CENTER_RIGHT" editable="false" layoutX="687.0" layoutY="369.0" prefHeight="31.0" prefWidth="173.0" promptText="R$0,00">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField alignment="CENTER" editable="false" layoutX="29.0" layoutY="53.0" prefHeight="45.0" prefWidth="831.0" text="CAIXA ABERTO">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="490.0" layoutY="109.0" prefHeight="17.0" prefWidth="248.0" text="LISTA DE PRODUTOS">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Group>
+         <children>
+            <Label layoutX="187.0" layoutY="368.0" opacity="0.52" text="F8 - PESQUISAR PRODUTO&#10;F9 - ALTERAR VENDA&#10;F10 - FINALIZAR&#10;F11 - EXCLUIR VENDA&#10;Ctrl+D - CPF" />
+            <Label layoutX="340.0" layoutY="369.0" opacity="0.52" text="Ctrl+P - PREÇO PRODUTO&#10;Ctrl+R - CONTAS A RECEBER&#10;&#10;P - IMPRIMIR&#10;Esc - SAIR" />
+            <Label layoutX="32.0" layoutY="368.0" opacity="0.52" text="F2 - CÓDIGO INTERNO&#10;F3 - EXCLUIR ITEM&#10;F4 - INSERIR QUANTIDADE&#10;F5 - NOVA VENDA&#10;F7 - PESQUISAR VENDA" />
+         </children>
+      </Group>
+      <TableView fx:id="tbv_lista" layoutX="367.0" layoutY="129.0" prefHeight="199.0" prefWidth="493.0">
+        <columns>
+          <TableColumn prefWidth="45.0" text="ITEM" />
+          <TableColumn prefWidth="74.0" text="CÓDIGO" />
+            <TableColumn prefWidth="138.0" text="DESCRIÇÃO" />
+            <TableColumn prefWidth="60.0" text="QTDE" />
+            <TableColumn prefWidth="87.0" text="VLR UNIT" />
+            <TableColumn prefWidth="88.0" text="TOTAL" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

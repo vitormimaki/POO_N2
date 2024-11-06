@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.LoginController">
+   <children>
+      <Label layoutX="357.0" layoutY="77.0" text="LOGIN">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_login" layoutX="357.0" layoutY="126.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="357.0" layoutY="185.0" text="SENHA">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txt_senha" layoutX="357.0" layoutY="231.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </PasswordField>
+      <ImageView fx:id="btn_ver" fitHeight="31.0" fitWidth="31.0" layoutX="555.0" layoutY="231.0" onMouseClicked="#trocarVisibilidade" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <image>
+            <Image url="@../bin/icones/oculto.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_entrar" layoutX="250.0" layoutY="310.0" mnemonicParsing="false" onAction="#autenticarLogin" text="ENTRAR">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="txt_senhavisivel" layoutX="357.0" layoutY="231.0" prefHeight="31.0" prefWidth="187.0" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+   </children>
+</AnchorPane>

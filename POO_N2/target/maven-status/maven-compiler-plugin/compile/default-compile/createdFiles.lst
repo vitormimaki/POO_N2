@@ -1,0 +1,10 @@
+br\com\fatec\MaskFormatter.class
+br\com\fatec\controller\LoginController.class
+br\com\fatec\controller\CaixaController.class
+br\com\fatec\controller\CadastroServicosController.class
+br\com\fatec\controller\CadastroClientesController.class
+br\com\fatec\App.class
+br\com\fatec\controller\MenuController.class
+br\com\fatec\controller\CadastroAgendamentosController.class
+br\com\fatec\controller\CadastroPetsController.class
+br\com\fatec\persistencia\Banco.class

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="499.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.CadastroAgendamentosController">
+    <stylesheets>
+        <URL value="@/br/com/fatec/css/cadastroagendamentos.css" />
+    </stylesheets>
+   <children>
+      <TabPane prefHeight="383.0" prefWidth="499.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab closable="false" text="Agendar Serviços">
+               <content>
+                  <AnchorPane prefHeight="384.0" prefWidth="499.0">
+                     <children>
+                        <Label layoutX="41.0" layoutY="30.0" text="CPF DO CLIENTE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_cpfAgendar" layoutX="44.0" layoutY="60.0" prefHeight="18.0" prefWidth="163.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="295.0" layoutY="30.0" text="PET DO CLIENTE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_pet" layoutX="295.0" layoutY="59.0" prefHeight="33.0" prefWidth="163.0" />
+                        <ImageView fx:id="img_pet" fitHeight="150.0" fitWidth="200.0" layoutX="297.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../bin/icones/animal.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="45.0" layoutY="104.0" text="TIPO DE SERVIÇO">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_tipo" layoutX="46.0" layoutY="134.0" prefHeight="30.0" prefWidth="163.0" />
+                        <Label layoutX="46.0" layoutY="182.0" text="DATA DO SERVIÇO">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dtp_dataServico" layoutX="46.0" layoutY="212.0" prefHeight="27.0" prefWidth="164.0" />
+                        <Label layoutX="45.0" layoutY="250.0" text="HORA DO SERVIÇO">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_horaServico" layoutX="48.0" layoutY="280.0" prefHeight="18.0" prefWidth="163.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="btn_agendar" layoutX="310.0" layoutY="280.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="124.0" text="AGENDAR">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Consultar Agendamentos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="9.0" text="Parâmetro:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_parametro" layoutX="122.0" layoutY="11.0" prefHeight="25.0" prefWidth="130.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label layoutX="267.0" layoutY="9.0" text="Digite:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_filtro" layoutX="336.0" layoutY="11.0" onInputMethodTextChanged="#filtraParametro">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <TableView layoutY="44.0" prefHeight="312.0" prefWidth="499.0">
+                           <columns>
+                              <TableColumn prefWidth="72.0" text="DATA" />
+                              <TableColumn prefWidth="74.0" text="HORA" />
+                              <TableColumn prefWidth="77.0" text="CPF" />
+                              <TableColumn prefWidth="68.0" text="TIPO" />
+                              <TableColumn prefWidth="111.0" text="PET" />
+                              <TableColumn prefWidth="98.0" text="VALOR" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
