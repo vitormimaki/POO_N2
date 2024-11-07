@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="598.0" style="-fx-background-color: #E4D0A1;" styleClass="testando" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.MenuController">
    <children>
-      <Label layoutX="166.0" layoutY="34.0" text="MENU DE ATIVIDADES">
+      <Label layoutX="166.0" layoutY="34.0" text="MENU DE ATIVIDADES" textFill="#90bc72">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>
@@ -25,7 +25,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btn_cadastroClientes" alignment="CENTER" mnemonicParsing="false" onAction="#abrirForm" prefHeight="70.0" prefWidth="163.0" text="Cadastro de &#10;Clientes" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="btn_cadastroClientes" alignment="CENTER" mnemonicParsing="false" onAction="#abrirForm" prefHeight="70.0" prefWidth="163.0" text="Cadastro de &#10;Clientes" textAlignment="CENTER" textFill="#141414" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>

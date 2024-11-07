@@ -3,5 +3,7 @@
  */
 
 .mainFxmlClass {
-
+    #hover {
+        color: black;
+    }
 }

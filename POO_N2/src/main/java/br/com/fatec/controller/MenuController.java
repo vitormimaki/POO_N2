@@ -17,6 +17,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +28,7 @@ import javafx.stage.Stage;
  */
 public class MenuController implements Initializable {
 
-    @FXML
+    @FXML   
     private Button btn_caixa;
     @FXML
     private Button btn_login;
@@ -45,6 +47,8 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        btn_cadastroClientes.setOnMouseEntered(event -> hoverIn());
+        btn_cadastroClientes.setOnMouseExited(event -> hoverOut());
     }    
 
     @FXML
@@ -76,6 +80,21 @@ public class MenuController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+     // Efeito quando o mouse entra no botão
+    private void hoverIn() {
+        DropShadow hoverEffect = new DropShadow();
+        hoverEffect.setColor(Color.BLUE);
+        hoverEffect.setRadius(10);
+        hoverEffect.setOffsetX(5);
+        hoverEffect.setOffsetY(5);
+        btn_cadastroClientes.setEffect(hoverEffect);
+    }
+
+    // Efeito quando o mouse sai do botão
+    private void hoverOut() {
+        btn_cadastroClientes.setEffect(null);  // Remove o efeito
     }
     
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,65 +8,129 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.CadastroServicosController">
+<AnchorPane id="AnchorPane" prefHeight="383.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.CadastroServicosController">
    <children>
-      <Label layoutX="50.0" layoutY="48.0" text="TIPO DE SERVIÇO">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField layoutX="50.0" layoutY="78.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextField>
-      <Label layoutX="50.0" layoutY="121.0" text="DESCRIÇÃO">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField layoutX="50.0" layoutY="151.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextField>
-      <Label layoutX="50.0" layoutY="200.0" text="DURAÇÃO">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField layoutX="50.0" layoutY="230.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextField>
-      <Label layoutX="50.0" layoutY="271.0" text="PREÇO">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField layoutX="50.0" layoutY="301.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextField>
-      <Label layoutX="281.0" layoutY="48.0" text="DATA DO SERVIÇO">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <DatePicker layoutX="281.0" layoutY="78.0" prefHeight="31.0" prefWidth="187.0" />
+      <TabPane layoutY="-1.0" prefHeight="383.0" prefWidth="499.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab closable="false" text="Gerenciar Serviços">
+               <content>
+                  <AnchorPane prefHeight="323.0" prefWidth="499.0">
+                     <children>
+                        <Label layoutX="26.0" layoutY="38.0" text="TIPO DE SERVIÇO">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_tipo" layoutX="26.0" layoutY="68.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <Label layoutX="250.0" layoutY="38.0" text="DESCRIÇÃO">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_desc" layoutX="250.0" layoutY="68.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <ImageView fx:id="img_foto" fitHeight="194.0" fitWidth="172.0" layoutX="265.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../bin/icones/service.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="26.0" layoutY="113.0" text="DURAÇÃO">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_duracao" layoutX="26.0" layoutY="143.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <Label layoutX="26.0" layoutY="180.0" text="PREÇO">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_preco" layoutX="26.0" layoutY="210.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <HBox alignment="CENTER" layoutX="28.0" layoutY="255.0" prefHeight="55.0" prefWidth="184.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="btn_salvar" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="SALVAR">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_excluir" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="EXCLUIR">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Consultar Serviços">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="19.0" layoutY="9.0" text="Parâmetro:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmb_parametro" layoutX="127.0" layoutY="11.0" prefHeight="25.0" prefWidth="129.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label layoutX="267.0" layoutY="9.0" text="Digite:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_filtro" layoutX="336.0" layoutY="11.0" onInputMethodTextChanged="#filtraParametro">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <TableView layoutY="44.0" prefHeight="311.0" prefWidth="499.0">
+                           <columns>
+                              <TableColumn prefWidth="112.0" text="TIPO" />
+                              <TableColumn prefWidth="191.0" text="DESC" />
+                              <TableColumn prefWidth="95.0" text="DURAÇÃO" />
+                              <TableColumn prefWidth="100.0" text="VALOR" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
