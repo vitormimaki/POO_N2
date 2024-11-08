@@ -16,13 +16,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.util.converter.DefaultStringConverter;
 
 /**
  * FXML Controller class
@@ -72,8 +68,6 @@ public class CadastroClientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //App.mascaraCEP(txt_cep);
-        App.mascaraData(dtp_dataNasc);
         Platform.runLater(() -> txt_cpf.requestFocus());
 
         MaskFormatter cep = new MaskFormatter(txt_cep);
@@ -87,13 +81,7 @@ public class CadastroClientesController implements Initializable {
         fone.showMask();
         MaskFormatter data = new MaskFormatter(dtp_dataNasc);
         data.setMask(MaskFormatter.DATA_BARRA);
-        data.showMask();
-        
-        App.tamanhoMaximo(txt_cep, 9);
-        App.tamanhoMaximo(txt_cpf, 14);
-        App.tamanhoMaximo(txt_fone, 14);
-        App.tamanhoMaximo(dtp_dataNasc, 10);
-        
+        data.showMask();  
     }
     
 
@@ -109,8 +97,4 @@ public class CadastroClientesController implements Initializable {
     private void excluirRegistro(ActionEvent event) {
     }
 
-    @FXML
-    private void filtraParametro(KeyEvent event) {
-    }
-    
 }

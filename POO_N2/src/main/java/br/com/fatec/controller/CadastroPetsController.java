@@ -55,9 +55,5 @@ public class CadastroPetsController implements Initializable {
     @FXML
     private void mudarFoto(MouseEvent event) {
     }
-
-    @FXML
-    private void filtraParametro(InputMethodEvent event) {
-    }
     
 }

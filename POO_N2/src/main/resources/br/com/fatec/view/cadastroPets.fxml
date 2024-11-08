@@ -122,12 +122,12 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txt_filtra" layoutX="395.0" layoutY="3.0" onInputMethodTextChanged="#filtraParametro">
+                        <TextField fx:id="txt_filtra" layoutX="395.0" layoutY="3.0">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TableView layoutY="35.0" prefHeight="423.0" prefWidth="712.0">
+                        <TableView layoutY="35.0" prefHeight="340.0" prefWidth="712.0">
                           <columns>
                             <TableColumn prefWidth="91.0" text="CPF DONO" />
                               <TableColumn prefWidth="153.0" text="NOME DONO" />

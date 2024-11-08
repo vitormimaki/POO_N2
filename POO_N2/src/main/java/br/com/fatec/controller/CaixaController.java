@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -47,6 +48,24 @@ public class CaixaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(() -> txt_codItem.requestFocus());
-    }    
+        
+        txt_totalRecebido.setOnKeyTyped((KeyEvent evento) -> {
+            if(!"0123456789".contains(evento.getCharacter())) {
+                evento.consume();
+            }
+            if(evento.getCharacter().trim().length() == 0) { //Se excluiu
+                txt_troco.setText("");
+            } else {
+                if (txt_subtotal.getText() != "") {
+                    int recebido = Integer.parseInt(txt_totalRecebido.getText());
+                    int subtotal = Integer.parseInt(txt_subtotal.getText());
+                    if (recebido <= subtotal) {
+                        recebido = subtotal;
+                    }
+                    txt_troco.setText(Integer.toString(recebido - subtotal));
+                }
+            }
+        });
+    }
     
 }

@@ -49,7 +49,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField id="2" fx:id="txt_nome" layoutX="45.0" layoutY="154.0" prefHeight="31.0" prefWidth="378.0">
+                        <TextField id="2" fx:id="txt_nome" layoutX="45.0" layoutY="154.0" prefHeight="31.0" prefWidth="378.0" text="R$ 0,00">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -210,7 +210,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txt_filtro" layoutX="418.0" layoutY="11.0" onInputMethodTextChanged="#filtraParametro">
+                        <TextField fx:id="txt_filtro" layoutX="418.0" layoutY="11.0">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor></TextField>
