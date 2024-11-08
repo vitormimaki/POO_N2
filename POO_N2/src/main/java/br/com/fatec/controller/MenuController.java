@@ -4,8 +4,6 @@
  */
 package br.com.fatec.controller;
 
-import br.com.fatec.App;
-import com.mysql.cj.x.protobuf.MysqlxExpect;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

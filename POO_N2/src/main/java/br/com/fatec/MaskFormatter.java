@@ -4,6 +4,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyEvent;
+import javafx.util.converter.DefaultStringConverter;
 
 /**
  *
@@ -28,8 +29,9 @@ public class MaskFormatter {
     public static final int CPF = 2;
     public static final int RG = 3;
     public static final int CEP = 4;
-    public static final int DATA_BARRA = 5;
-    public static final int DATA_TRACO = 6;
+    public static final int REAL = 5;
+    public static final int DATA_BARRA = 6;
+    public static final int DATA_TRACO = 7;
 
     public MaskFormatter(TextField textField) {
         this.textField = textField;
@@ -67,6 +69,9 @@ public class MaskFormatter {
                 case CEP:
                     maskCep();
                     break;
+                case REAL:
+                    maskReal();
+                    break;
                 default:
                     break;
             }
@@ -83,11 +88,30 @@ public class MaskFormatter {
             }
         }
     }
+    
+    /**
+     * @param textField
+     * Texto do FXML que será restringido
+     * @param tamanho 
+     * Tamanho Máximo do Campo
+     */
+    private static void tamanhoMaximo(TextField textField, int tamanho) {
+        textField.setTextFormatter(new TextFormatter<>(new DefaultStringConverter(), "",
+            change -> change.getControlNewText().length() <= tamanho ? change : null));
+    }
+    
+    private static void tamanhoMaximo(DatePicker datepicker, int tamanho) {
+        TextField editor = datepicker.getEditor();
+        editor.setTextFormatter(new TextFormatter<>(new DefaultStringConverter(), "",
+            change -> change.getControlNewText().length() <= tamanho ? change : null));
+    }
 
     /**
      * Método que iniciar a mascara.
      */
     private void maskTel8Dig() {
+        tamanhoMaximo(textField, 13);
+        
         /*evento que captura os dados digitados*/
         textField.setOnKeyTyped((KeyEvent evento) -> {
 
@@ -101,7 +125,7 @@ public class MaskFormatter {
             if (evento.getCharacter().trim().length() == 0) {
 
                 switch (textField.getText().length()) {
-                    case 9:
+                    case 8:
                         /*subString so retornar os caracteres entre aquelas posições
                         fazemos isso para apagar o caractere - que colocamos na mascara.*/
                         textField.setText(textField.getText().substring(0, 7));
@@ -140,7 +164,7 @@ public class MaskFormatter {
                     textField.setText(textField.getText() + ")");
                     textField.positionCaret(textField.getText().length());
                     break;
-                case 9:
+                case 8:
                     textField.setText(textField.getText() + "-");
                     textField.positionCaret(textField.getText().length());
                     break;
@@ -150,6 +174,8 @@ public class MaskFormatter {
     }
 
     private void maskTel9Dig() {
+        tamanhoMaximo(textField, 14);
+        
         textField.setOnKeyTyped((KeyEvent evento) -> {
             if (!"0123456789".contains(evento.getCharacter())) {
                 evento.consume();
@@ -193,6 +219,7 @@ public class MaskFormatter {
     }
 
     private void maskCpf() {
+        tamanhoMaximo(textField, 14);
 
         textField.setOnKeyTyped((KeyEvent evento) -> {
             if (!"0123456789".contains(evento.getCharacter())) {
@@ -238,6 +265,8 @@ public class MaskFormatter {
     }
 
     private void maskRg() {
+        tamanhoMaximo(textField, 12);
+        
         textField.setOnKeyTyped((KeyEvent evento) -> {
             if (!"0123456789".contains(evento.getCharacter())) {
                 evento.consume();
@@ -283,6 +312,7 @@ public class MaskFormatter {
     }
     
     private void maskCep() {
+        tamanhoMaximo(textField, 9);
         textField.setOnKeyTyped(evento -> {
             // Impede a entrada de caracteres não numéricos
             if (!"0123456789".contains(evento.getCharacter())) {
@@ -313,8 +343,88 @@ public class MaskFormatter {
             }
         });
     }
+    
+    private void maskReal() {
+        textField.setOnKeyTyped(evento -> {
+            // Impede a entrada de caracteres não numéricos
+            if (!"0123456789".contains(evento.getCharacter())) {
+                evento.consume();
+            }
+
+            // Remove caracteres caso o usuário apague algo
+            if (evento.getCharacter().trim().length() == 0) {
+                String text = textField.getText().replaceAll("[^\\d]", "");
+                textField.setText(text.isEmpty() ? "R$ 0,00" : "R$ " + text);
+                formatReal();
+                return;
+            }
+
+            // Formata o texto conforme a digitação
+            formatReal();
+        });
+    }
+
+    private void formatReal() {
+        String text = textField.getText().replaceAll("[^\\d]", ""); // Remove qualquer formatação existente
+
+        if (text.length() > 0) {
+            // Converte a string para uma forma numérica e formata com separadores de milhares
+            double value = Double.parseDouble(text) / 100;
+            String formattedValue = String.format("%,.2f", value);
+
+            // Substitui a vírgula por ponto nos milhares, se necessário
+            if (value >= 1000) {
+                formattedValue = formattedValue.replace(",", "X").replace(",", ".").replace("X", ",");
+            }
+
+            textField.setText("R$ " + formattedValue); // Adiciona "R$ " ao campo formatado
+            textField.positionCaret(textField.getText().length()); // Ajusta o cursor ao final do texto
+        }
+    }
+
+    
+    /*
+    private void maskReal() {
+        textField.setOnKeyTyped(evento -> {
+            // Impede a entrada de caracteres não numéricos
+            if (!"0123456789".contains(evento.getCharacter())) {
+                evento.consume();
+            }
+
+            // Remove caracteres caso o usuário apague algo
+            if (evento.getCharacter().trim().length() == 0) {
+                String text = textField.getText();
+                textField.setText(text.replaceAll("[^\\d]", ""));
+                formatReal();
+                return;
+            }
+
+            // Formata o texto conforme a digitação
+            formatReal();
+        });
+    }
+
+    private void formatReal() {
+        String text = textField.getText().replaceAll("[^\\d]", ""); // Remove qualquer formatação existente
+        if (text.length() > 0) {
+            // Converte a string para uma forma numérica e formata com separadores de milhares
+            double value = Double.parseDouble(text) / 100;
+            String formattedValue = String.format("%,.2f", value);
+
+            // Só substitui a vírgula por ponto nos milhares se o valor for >= 1.000
+            if (value >= 1000) {
+                formattedValue = formattedValue.replace(",", "X").replace(",", ".").replace("X", ",");
+            }
+
+            textField.setText("R$ " + formattedValue);
+            textField.positionCaret(textField.getText().length()); // Ajusta o cursor ao final do texto
+        }
+    }
+    */
 
     private void maskDataBarra() {
+        tamanhoMaximo(datePicker, 10);
+                
         datePicker.getEditor().setOnKeyTyped((KeyEvent evento) -> {
 
             if (!"0123456789".contains(evento.getCharacter())) {
@@ -350,6 +460,8 @@ public class MaskFormatter {
     }
     
     private void maskDataTraco() {
+        tamanhoMaximo(datePicker, 10);
+        
         datePicker.getEditor().setOnKeyTyped((KeyEvent evento) -> {
 
             if (!"0123456789".contains(evento.getCharacter())) {
@@ -402,6 +514,12 @@ public class MaskFormatter {
             case RG:
                 textField.setPromptText("__.___.___-_");
                 break;
+            case CEP:
+                textField.setPromptText("_____-___");
+                break;
+            case REAL:
+                textField.setPromptText("R$ 0,00");
+                break;
             case DATA_BARRA:
                 datePicker.setPromptText("DD/MM/AAAA");
                 break;
@@ -412,6 +530,8 @@ public class MaskFormatter {
                 break;
         }
     }
+    
+    
     
     public static String tirarFormatacao(TextField textField, int formato) {
         String novo = "";
@@ -424,18 +544,25 @@ public class MaskFormatter {
             novo += textField.getText().substring(4, 7);
             novo += textField.getText().substring(8, 11);
             novo += textField.getText().substring(12, 14);
-        //}  else if (formato == MaskFormatter.RG) {
-        //    novo = textField.getText().substring(1, 3);
-        //    novo += textField.getText().substring(4, 9);
-        //   novo += textField.getText().substring(10, 14);
+        }  else if (formato == MaskFormatter.RG) {
+            novo = textField.getText().substring(0, 2);
+            novo += textField.getText().substring(3, 6);
+            novo += textField.getText().substring(7, 10);
+            novo += textField.getText().substring(11, 12);
         }  else if (formato == MaskFormatter.TEL_9DIG) {
             novo = textField.getText().substring(1, 3);
             novo += textField.getText().substring(4, 9);
             novo += textField.getText().substring(10, 14);
-        //} else if (formato == MaskFormatter.TEL_8DIG) {
-        //    novo = textField.getText().substring(1, 3);
-        //    novo += textField.getText().substring(4, 9);
-        //    novo += textField.getText().substring(10, 14);
+        } else if (formato == MaskFormatter.TEL_8DIG) {
+            novo = textField.getText().substring(1, 3);
+            novo += textField.getText().substring(4, 8);
+            novo += textField.getText().substring(9, 13);
+        } else if (formato == MaskFormatter.REAL) {
+            String textoOriginal = textField.getText();
+            if (textoOriginal.length() >= 3) { // Verifica se há pelo menos 3 caracteres
+                novo = textoOriginal.substring(3).replace(".", "");
+                novo = novo.replace(",", ".");
+            }
         } else {
             return null;
         }
