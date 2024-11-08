@@ -72,8 +72,6 @@ public class CadastroClientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //App.mascaraCEP(txt_cep);
-        App.mascaraData(dtp_dataNasc);
         Platform.runLater(() -> txt_cpf.requestFocus());
 
         MaskFormatter cep = new MaskFormatter(txt_cep);
@@ -89,10 +87,9 @@ public class CadastroClientesController implements Initializable {
         data.setMask(MaskFormatter.DATA_BARRA);
         data.showMask();
         
-        App.tamanhoMaximo(txt_cep, 9);
-        App.tamanhoMaximo(txt_cpf, 14);
-        App.tamanhoMaximo(txt_fone, 14);
-        App.tamanhoMaximo(dtp_dataNasc, 10);
+        MaskFormatter nome = new MaskFormatter(txt_nome);
+        nome.setMask(MaskFormatter.REAL);
+        nome.showMask();
         
     }
     
@@ -103,14 +100,11 @@ public class CadastroClientesController implements Initializable {
 
     @FXML
     private void salvarRegistro(ActionEvent event) {
+        App.mensagem(MaskFormatter.tirarFormatacao(txt_nome, MaskFormatter.REAL), 2);
     }
     
     @FXML
     private void excluirRegistro(ActionEvent event) {
-    }
-
-    @FXML
-    private void filtraParametro(KeyEvent event) {
     }
     
 }
