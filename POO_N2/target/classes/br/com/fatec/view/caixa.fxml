@@ -36,7 +36,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <TextField fx:id="txt_valorUnit" alignment="CENTER_RIGHT" editable="false" layoutX="191.0" layoutY="185.0" prefHeight="28.0" prefWidth="149.0" promptText="R$ 0,00" />
+      <TextField fx:id="txt_valorUnit" alignment="CENTER_RIGHT" editable="false" layoutX="191.0" layoutY="185.0" prefHeight="28.0" prefWidth="149.0" promptText="R$0,00" />
       <Label layoutX="191.0" layoutY="221.0" prefHeight="17.0" prefWidth="149.0" text="QUANTIDADE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -49,7 +49,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <TextField fx:id="txt_totalItem" alignment="CENTER_RIGHT" layoutX="191.0" layoutY="297.0" prefHeight="28.0" prefWidth="149.0" promptText="R$ 0,00">
+      <TextField fx:id="txt_totalItem" alignment="CENTER_RIGHT" layoutX="191.0" layoutY="297.0" prefHeight="28.0" prefWidth="149.0" promptText="R$0,00">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
@@ -57,7 +57,7 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>
-      <TextField fx:id="txt_totalRecebido" alignment="CENTER_RIGHT" layoutX="506.0" layoutY="433.0" prefHeight="28.0" prefWidth="173.0" promptText="R$ 0,00">
+      <TextField fx:id="txt_totalRecebido" alignment="CENTER_RIGHT" layoutX="506.0" layoutY="433.0" prefHeight="28.0" prefWidth="173.0" promptText="R$0,00">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
@@ -65,12 +65,12 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>
-      <TextField fx:id="txt_troco" alignment="CENTER_RIGHT" editable="false" layoutX="687.0" layoutY="433.0" prefHeight="28.0" prefWidth="173.0" promptText="R$ 0,00" text="R$ 0,00" />
+      <TextField fx:id="txt_troco" alignment="CENTER_RIGHT" editable="false" layoutX="687.0" layoutY="433.0" prefHeight="28.0" prefWidth="173.0" promptText="R$0,00" />
       <Label alignment="CENTER_RIGHT" layoutX="749.0" layoutY="337.0" prefHeight="30.0" prefWidth="111.0" text="SUBTOTAL">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>
-      <TextField fx:id="txt_subtotal" alignment="CENTER_RIGHT" editable="false" layoutX="687.0" layoutY="369.0" prefHeight="31.0" prefWidth="173.0" promptText="R$ 0,00" text="R$ 23,00">
+      <TextField fx:id="txt_subtotal" alignment="CENTER_RIGHT" editable="false" layoutX="687.0" layoutY="369.0" prefHeight="31.0" prefWidth="173.0" promptText="R$0,00">
          <font>
             <Font size="15.0" />
          </font></TextField>

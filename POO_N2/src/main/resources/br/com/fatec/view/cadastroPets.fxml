@@ -122,7 +122,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txt_filtra" layoutX="395.0" layoutY="3.0">
+                        <TextField fx:id="txt_filtra" layoutX="395.0" layoutY="3.0" onInputMethodTextChanged="#filtraParametro">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>

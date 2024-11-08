@@ -8,7 +8,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
+import javafx.util.converter.DefaultStringConverter;
 
 /**
  * JavaFX App
@@ -37,7 +42,103 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+    public static void mascaraData(DatePicker datePicker){
+
+        datePicker.getEditor().setOnKeyTyped((KeyEvent event) -> {
+            if("0123456789".contains(event.getCharacter())==false){
+                event.consume();
+            }
+
+            if(event.getCharacter().trim().length()==0){ // apagando
+                if(datePicker.getEditor().getText().length()==3){
+                    datePicker.getEditor().setText(datePicker.getEditor().getText().substring(0,2));
+                    datePicker.getEditor().positionCaret(datePicker.getEditor().getText().length());
+                }
+                if(datePicker.getEditor().getText().length()==6){
+                    datePicker.getEditor().setText(datePicker.getEditor().getText().substring(0,5));
+                    datePicker.getEditor().positionCaret(datePicker.getEditor().getText().length());
+                }
+
+            }else{ // escrevendo
+
+                if(datePicker.getEditor().getText().length()==10) event.consume();
+
+                if(datePicker.getEditor().getText().length()==2){
+                    datePicker.getEditor().setText(datePicker.getEditor().getText()+"/");
+                    datePicker.getEditor().positionCaret(datePicker.getEditor().getText().length());
+                }
+                if(datePicker.getEditor().getText().length()==5){
+                    datePicker.getEditor().setText(datePicker.getEditor().getText()+"/");
+                    datePicker.getEditor().positionCaret(datePicker.getEditor().getText().length());
+                }
+
+            }
+        });
+
+        datePicker.getEditor().setOnKeyReleased((KeyEvent evt) -> {
+
+            if(!datePicker.getEditor().getText().matches("\\d/*")){
+                datePicker.getEditor().setText(datePicker.getEditor().getText().replaceAll("[^\\d/]", ""));
+                datePicker.getEditor().positionCaret(datePicker.getEditor().getText().length());
+            }
+        });
+
+    }
+    public static void mascaraCEP(TextField textField){
+
+        String val = "";
+
+        textField.setOnKeyTyped((KeyEvent event) -> {
+            if("0123456789".contains(event.getCharacter())==false){
+                event.consume();
+            }
+
+            if(event.getCharacter().trim().length()==0){ // apagando
+
+                if(textField.getText().length()==6){
+                    textField.setText(textField.getText().substring(0,5));
+                    textField.positionCaret(textField.getText().length());
+                }
+
+            }else{ // escrevendo
+
+                if(textField.getText().length()==9) event.consume();
+
+                if(textField.getText().length()==5){
+                    textField.setText(textField.getText()+"-");
+                    textField.positionCaret(textField.getText().length());
+                }
+
+
+            }
+        });
+
+        textField.setOnKeyReleased((KeyEvent evt) -> {
+
+            if(!textField.getText().matches("\\d-*")){
+                textField.setText(textField.getText().replaceAll("[^\\d-]", ""));
+                textField.positionCaret(textField.getText().length());
+            }
+        });
+
+    }
     
+    /**
+     * @param textField
+     * Texto do FXML que será restringido
+     * @param tamanho 
+     * Tamanho Máximo do Campo
+     */
+    public static void tamanhoMaximo(TextField textField, int tamanho) {
+        textField.setTextFormatter(new TextFormatter<>(new DefaultStringConverter(), "",
+            change -> change.getControlNewText().length() <= tamanho ? change : null));
+    }
+    public static void tamanhoMaximo(DatePicker datepicker, int tamanho) {
+        TextField editor = datepicker.getEditor();
+        editor.setTextFormatter(new TextFormatter<>(new DefaultStringConverter(), "",
+            change -> change.getControlNewText().length() <= tamanho ? change : null));
+    }
     public static Image carregarImagem(String caminho) {
         try {
             Image imagem = new Image(App.class.getResourceAsStream(caminho));
