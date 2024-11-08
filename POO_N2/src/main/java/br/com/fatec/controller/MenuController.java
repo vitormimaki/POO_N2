@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -36,6 +38,8 @@ public class MenuController implements Initializable {
     @FXML
     private Button btn_cadastroServicos;
     @FXML
+    private Button btn_cadastroAgendamentos;
+    @FXML
     private Button btn_consultaAgendamentos;
 
     /**
@@ -43,8 +47,14 @@ public class MenuController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        // Adicionando efeitos de hover para todos os botões de forma mais genérica
+        addHoverEffect(btn_cadastroClientes);
+        addHoverEffect(btn_cadastroPets);
+        addHoverEffect(btn_cadastroServicos);
+        addHoverEffect(btn_caixa);
+        addHoverEffect(btn_cadastroAgendamentos);
+        addHoverEffect(btn_login);
+    }     
 
     @FXML
     private void abrirForm(ActionEvent event) {
@@ -77,4 +87,24 @@ public class MenuController implements Initializable {
         }
     }
     
+    // Método para adicionar o efeito de hover a qualquer botão
+    private void addHoverEffect(Button button) {
+        button.setOnMouseEntered(event -> hoverIn(button));
+        button.setOnMouseExited(event -> hoverOut(button));
+    }
+    
+    // Efeito quando o mouse entra no botão
+    private void hoverIn(Button button) {
+        DropShadow hoverEffect = new DropShadow();
+        hoverEffect.setColor(Color.BURLYWOOD);
+        hoverEffect.setRadius(10);
+        hoverEffect.setOffsetX(5);
+        hoverEffect.setOffsetY(5);
+        button.setEffect(hoverEffect);
+    }
+
+    // Efeito quando o mouse sai do botão
+    private void hoverOut(Button button) {
+        button.setEffect(null);  // Remove o efeito
+    }      
 }

@@ -49,7 +49,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField id="2" fx:id="txt_nome" layoutX="45.0" layoutY="154.0" prefHeight="31.0" prefWidth="378.0" text="R$ 0,00">
+                        <TextField id="2" fx:id="txt_nome" layoutX="45.0" layoutY="154.0" prefHeight="31.0" prefWidth="378.0">
                            <font>
                               <Font size="15.0" />
                            </font>
