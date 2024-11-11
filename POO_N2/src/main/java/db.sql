@@ -37,14 +37,6 @@ CREATE TABLE Pets(
          FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf)
 );
 
-CREATE TABLE Servicos (
-         id_servico INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	 tipo VARCHAR(15) NOT NULL UNIQUE,
-	 descricao VARCHAR(20),
-	 duracao TIME,
-	 preco DECIMAL(10,2)
-);
-
 CREATE TABLE Agendamentos (
          id_agendamento INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
          tipo VARCHAR(15) NOT NULL,
@@ -52,7 +44,6 @@ CREATE TABLE Agendamentos (
          id_pet INT NOT NULL,
          data_agendamento DATE NOT NULL,
          hora_agendamento TIME NOT NULL,
-         FOREIGN KEY (tipo) REFERENCES Servicos(tipo),
          FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf),
          FOREIGN KEY (id_pet) REFERENCES Pets(id_pet)
 );
