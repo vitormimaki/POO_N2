@@ -43,31 +43,6 @@ public class App extends Application {
         launch();
     }
     
-    public static Image carregarImagem(String caminho) {
-        try {
-            Image imagem = new Image(App.class.getResourceAsStream(caminho));
-            if (imagem.isError()) {
-                mensagem("Erro ao carregar a imagem: " + caminho, 1);
-                return null;
-            }
-            return imagem;
-        } catch (NullPointerException e) {
-            mensagem("Erro ao carregar a imagem: " + e.getMessage(), 1);
-            return null;
-        }
-        
-        /**
-         *  private void carregarImagem() {
-                // Use o caminho relativo à pasta resources
-                Image imagem = App.carregarImagem("/br/com/fatec/bin/icones/exemplo.png");
-                if (imagem != null) {
-                    imageView.setImage(imagem);
-                } else {
-                    System.out.println("Imagem não encontrada ou erro ao carregar.");
-                }
-            }
-         */
-    }
     /**
      * @param msg
      * Mensagem que vai aparecer

@@ -4,8 +4,15 @@
  */
 package br.com.fatec.controller;
 
+import br.com.fatec.Imagem;
 import br.com.fatec.MaskFormatter;
+import static br.com.fatec.persistencia.Banco.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,8 +22,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -85,7 +94,27 @@ public class CadastroClientesController implements Initializable {
     
 
     @FXML
-    private void selecionarFoto(MouseEvent event) {
+    public void selecionarFoto() {
+        // Criando o FileChooser para permitir ao usuário selecionar uma imagem
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imagens", "*.png", "*.jpg", "*.jpeg", "*.gif"));
+
+        // Obtendo o arquivo selecionado
+        File file = fileChooser.showOpenDialog(img_foto.getScene().getWindow());
+
+        if (file != null) {
+            // Carregando a imagem selecionada na ImageView
+            Image image = new Image(file.toURI().toString());
+            img_foto.setImage(image);
+
+            // Aqui você pode serializar e armazenar a imagem no banco de dados
+            try (Connection conn = DriverManager.getConnection("jdbc:mariadb://" + servidor +
+                     ":" + porta + "/" + bancoDados, usuario, senha)) {
+                Imagem.serializarImagem(image, conn);
+            } catch (SQLException | IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     @FXML

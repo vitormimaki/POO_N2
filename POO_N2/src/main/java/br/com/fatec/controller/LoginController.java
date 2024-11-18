@@ -5,6 +5,7 @@
 package br.com.fatec.controller;
 
 import br.com.fatec.App;
+import br.com.fatec.Imagem;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -73,7 +74,7 @@ public class LoginController implements Initializable {
     
     private void carregarImagem(ImageView img, String foto) {
         // Use o caminho relativo à pasta resources
-        Image imagem = App.carregarImagem("/br/com/fatec/bin/icones/" + foto + ".png");
+        Image imagem = Imagem.carregarImagem("/br/com/fatec/bin/icones/" + foto + ".png");
         if (imagem != null) {
             img.setImage(imagem);
         } else {

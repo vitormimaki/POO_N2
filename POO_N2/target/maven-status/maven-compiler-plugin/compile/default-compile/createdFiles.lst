@@ -8,6 +8,7 @@ br\com\fatec\App.class
 br\com\fatec\model\CEP.class
 br\com\fatec\dao\DAO.class
 br\com\fatec\controller\MenuController.class
+br\com\fatec\Imagem.class
 br\com\fatec\model\Vendas.class
 br\com\fatec\controller\CadastroAgendamentosController.class
 br\com\fatec\controller\CadastroPetsController.class
