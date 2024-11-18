@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 public class App extends Application {
 
     private static Scene scene;
+    private static Stage stage;
     public String diretorio = "/br/com/fatec/view/";
 
     @Override
@@ -34,6 +35,10 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    public static void fechar() {
+        stage.close();
+    }
+    
     public static void main(String[] args) {
         launch();
     }

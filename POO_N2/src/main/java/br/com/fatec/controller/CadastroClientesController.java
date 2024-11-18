@@ -4,7 +4,6 @@
  */
 package br.com.fatec.controller;
 
-import br.com.fatec.App;
 import br.com.fatec.MaskFormatter;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,13 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.util.converter.DefaultStringConverter;
 
 /**
  * FXML Controller class
@@ -87,10 +81,6 @@ public class CadastroClientesController implements Initializable {
         data.setMask(MaskFormatter.DATA_BARRA);
         data.showMask();
         
-        MaskFormatter nome = new MaskFormatter(txt_nome);
-        nome.setMask(MaskFormatter.REAL);
-        nome.showMask();
-        
     }
     
 
@@ -100,7 +90,7 @@ public class CadastroClientesController implements Initializable {
 
     @FXML
     private void salvarRegistro(ActionEvent event) {
-        App.mensagem(MaskFormatter.tirarFormatacao(txt_nome, MaskFormatter.REAL), 2);
+
     }
     
     @FXML
