@@ -12,11 +12,11 @@ import javafx.print.Collation;
  *
  * @author Vitor Aurélio Saccone Mimaki
  */
-public interface DAO <T> {
+public interface DAO <MODEL> {
     
-    public boolean insere(T model) throws SQLException;
-    public boolean remove(T model) throws SQLException;
-    public boolean altera(T model) throws SQLException;
-    public T buscaID(T model) throws SQLException;
-    public Collection<T> lista(String criterio) throws SQLException;
+    public boolean insere(MODEL obj) throws SQLException;
+    public boolean remove(MODEL obj) throws SQLException;
+    public boolean altera(MODEL obj) throws SQLException;
+    public MODEL buscaID(MODEL obj) throws SQLException;
+    public Collection<MODEL> lista(String criterio) throws SQLException;
 }
