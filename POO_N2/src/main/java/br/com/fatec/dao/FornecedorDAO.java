@@ -168,14 +168,14 @@ public class FornecedorDAO implements DAO<Fornecedor> {
         //de um objeto e coloca o objeto dentro da coleção
         while(rs.next()) {
             //criar o objeto
-            fornecedores = new Fornecedor();
+            fornecedor = new Fornecedor();
             
             //mover os dados do resultSet para o objeto proprietário
-            fornecedores.setCodForn(rs.getInt("codForn"));
-            fornecedores.setRazaoSocial(rs.getString("razaoSocial"));
+            fornecedor.setCodForn(rs.getInt("codForn"));
+            fornecedor.setRazaoSocial(rs.getString("razaoSocial"));
             
             //move o objeto para a coleção
-            lista.add(fornecedores);
+            lista.add(fornecedor);
         }
                 
         //fecha a conexao
