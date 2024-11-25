@@ -21,6 +21,9 @@ public class Cliente {
     private String email;
     private String data_cadastro;
 
+    public Cliente() {
+    }
+
     public Cliente(int id_cliente, int cpf, String nome, String nasc, CEP cep, int numcasa, String data_cadastro) {
         this.id_cliente = id_cliente;
         this.cpf = cpf;

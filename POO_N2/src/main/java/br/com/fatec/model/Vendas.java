@@ -14,6 +14,9 @@ public class Vendas {
     private Cliente cliente;
     private float vlrTotal;
 
+    public Vendas() {
+    }
+
     public Vendas(int id_venda, String data_venda, Cliente cliente, float vlrTotal) {
         this.id_venda = id_venda;
         this.data_venda = data_venda;

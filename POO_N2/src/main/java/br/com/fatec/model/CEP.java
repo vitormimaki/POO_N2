@@ -15,6 +15,9 @@ public class CEP {
     private String bairro;
     private String uf;
 
+    public CEP() {
+    }
+
     public CEP(int cep, String endereco, String cidade, String bairro, String uf) {
         this.cep = cep;
         this.endereco = endereco;

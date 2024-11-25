@@ -16,6 +16,9 @@ public class Produtos {
     private float qtde;
     private float vlrUnit;
 
+    public Produtos() {
+    }
+
     public Produtos(int codProd, String descricao, char tipo, float qtde, float vlrUnit) {
         this.codProd = codProd;
         this.descricao = descricao;

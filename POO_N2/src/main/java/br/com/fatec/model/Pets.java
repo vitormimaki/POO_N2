@@ -18,6 +18,9 @@ public class Pets {
     private String raca;
     private String data_cadastro;
 
+    public Pets() {
+    }
+
     public Pets(int id_pet, Cliente cliente, String nome, String nasc, String especie, String raca, String data_cadastro) {
         this.id_pet = id_pet;
         this.cliente = cliente;

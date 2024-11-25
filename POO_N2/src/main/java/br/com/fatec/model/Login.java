@@ -13,6 +13,9 @@ public class Login {
     private String usuario;
     private String senha;
 
+    public Login() {
+    }
+
     public Login(int id_login, String usuario, String senha) {
         this.id_login = id_login;
         this.usuario = usuario;

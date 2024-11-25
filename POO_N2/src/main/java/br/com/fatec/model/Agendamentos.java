@@ -16,6 +16,11 @@ public class Agendamentos {
     private String data_agendamento;
     private String hora_agendamento;
 
+    public Agendamentos() {
+    }
+    
+    
+
     public Agendamentos(int id_agendamento, String tipo, Cliente cliente, Pets pet, String data_agendamento, String hora_agendamento) {
         this.id_agendamento = id_agendamento;
         this.tipo = tipo;

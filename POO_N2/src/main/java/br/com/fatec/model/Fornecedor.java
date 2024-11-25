@@ -12,6 +12,9 @@ public class Fornecedor {
     private int codForn;
     private String razaoSocial;
 
+    public Fornecedor() {
+    }
+
     public Fornecedor(int codForn) {
         this.codForn = codForn;
     }
